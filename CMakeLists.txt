@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.27)
 project(CMakeActionTest)
 
 add_executable(cmake-action-test
-  main.cpp
+  main.c
   )
 
 enable_testing()
