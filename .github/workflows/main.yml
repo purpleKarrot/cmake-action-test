@@ -6,6 +6,7 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v4
+      - uses: seanmiddleditch/gha-setup-ninja@master
       - uses: purpleKarrot/cmake-action@master
         with:
           cmake-generator: Ninja
