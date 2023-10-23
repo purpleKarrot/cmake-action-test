@@ -3,13 +3,13 @@ on: [push]
 jobs:
   Ubuntu:
     runs-on: ubuntu-latest
-    name: Ubuntu Makefile
+    name: Ubuntu - Unix Makefiles
     steps:
       - uses: actions/checkout@v4
       - uses: purpleKarrot/cmake-action@master
   Ubuntu-Ninja:
     runs-on: ubuntu-latest
-    name: Ubuntu Ninja
+    name: Ubuntu - Ninja
     steps:
       - uses: actions/checkout@v4
       - uses: seanmiddleditch/gha-setup-ninja@master
@@ -18,9 +18,17 @@ jobs:
           cmake-generator: Ninja
   MacOS-Xcode:
     runs-on: macos-latest
-    name: MacOS Xcode
+    name: MacOS - Xcode
     steps:
       - uses: actions/checkout@v4
       - uses: purpleKarrot/cmake-action@master
         with:
           cmake-generator: Xcode
+  Windows:
+    runs-on: windows-2022
+    name: Windows - Visual Studio 17 2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: purpleKarrot/cmake-action@master
+        with:
+          cmake-generator: Visual Studio 17 2022
