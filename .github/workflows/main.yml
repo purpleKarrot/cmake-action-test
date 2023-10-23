@@ -6,23 +6,21 @@ jobs:
     name: Ubuntu Makefile
     steps:
       - uses: actions/checkout@v4
-      - id: cmake
-        uses: purpleKarrot/cmake-action@master
-      - run: echo Number of build errors: ${{ steps.cmake.outputs.build-errors }}
-        shell: bash
-      - run: echo Number of build warnings: ${{ steps.cmake.outputs.build-errors }}
-        shell: bash
+      - uses: purpleKarrot/cmake-action@master
   Ubuntu-Ninja:
     runs-on: ubuntu-latest
     name: Ubuntu Ninja
     steps:
       - uses: actions/checkout@v4
       - uses: seanmiddleditch/gha-setup-ninja@master
-      - id: cmake
-        uses: purpleKarrot/cmake-action@master
+      - uses: purpleKarrot/cmake-action@master
         with:
           cmake-generator: Ninja
-      - run: echo Number of build errors: ${{ steps.cmake.outputs.build-errors }}
-        shell: bash
-      - run: echo Number of build warnings: ${{ steps.cmake.outputs.build-errors }}
-        shell: bash
+  MacOS-Xcode:
+    runs-on: macos-latest
+    name: MacOS Xcode
+    steps:
+      - uses: actions/checkout@v4
+      - uses: purpleKarrot/cmake-action@master
+        with:
+          cmake-generator: Xcode
