@@ -1,12 +1,28 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  Ubuntu:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Ubuntu Makefile
+    steps:
+      - uses: actions/checkout@v4
+      - id: cmake
+        uses: purpleKarrot/cmake-action@master
+      - run: echo Number of build errors: ${{ steps.cmake.outputs.build-errors }}
+        shell: bash
+      - run: echo Number of build warnings: ${{ steps.cmake.outputs.build-errors }}
+        shell: bash
+  Ubuntu-Ninja:
+    runs-on: ubuntu-latest
+    name: Ubuntu Ninja
     steps:
       - uses: actions/checkout@v4
       - uses: seanmiddleditch/gha-setup-ninja@master
-      - uses: purpleKarrot/cmake-action@master
+      - id: cmake
+        uses: purpleKarrot/cmake-action@master
         with:
           cmake-generator: Ninja
+      - run: echo Number of build errors: ${{ steps.cmake.outputs.build-errors }}
+        shell: bash
+      - run: echo Number of build warnings: ${{ steps.cmake.outputs.build-errors }}
+        shell: bash
